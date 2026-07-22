@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leads — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  table.leads{ width:100%; border-collapse:collapse; }
+  table.leads th{ text-align:left; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); padding:.7rem .9rem; border-bottom:1px solid var(--stroke-soft); }
+  table.leads td{ padding:.85rem .9rem; border-bottom:1px solid var(--stroke-soft); font-size:.9rem; vertical-align:top; }
+  table.leads td a{ color:var(--gold); }
+  .empty{ color:var(--ink-faint); padding:2rem; text-align:center; }
+  .table-wrap{ overflow-x:auto; border-radius:var(--radius-sm); border:1px solid var(--stroke-soft); background:var(--glass); }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'leads', user: user }) %>
+
+  <main class="admin-main">
+    <div style="margin-bottom:2rem">
+      <p style="color:var(--ink-faint); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; margin-top:.3rem">Leads (<%= leads.length %>)</p>
+    </div>
+
+    <div class="table-wrap">
+      <% if (leads.length === 0) { %>
+        <div class="empty">No consultation requests yet.</div>
+      <% } else { %>
+        <table class="leads">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Experience</th>
+              <th>Preferred Time</th>
+              <th>Goals</th>
+              <th>Received</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% leads.forEach(function(l) { %>
+              <tr>
+                <td><%= l.name %></td>
+                <td><a href="tel:<%= l.phone %>"><%= l.phone %></a></td>
+                <td><%= l.email || '—' %></td>
+                <td><%= l.experience || '—' %></td>
+                <td><%= l.preferred_time || '—' %></td>
+                <td style="max-width:260px"><%= l.goals || '—' %></td>
+                <td style="white-space:nowrap; color:var(--ink-faint)"><%= l.created_at %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } %>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

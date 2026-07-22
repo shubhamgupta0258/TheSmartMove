@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard — The Smart Move</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'dashboard', user: user }) %>
+
+  <main class="admin-main">
+    <div class="form" style="margin-bottom:1.4rem; max-width:640px">
+      <h3>Welcome, <%= user.name %></h3>
+      <p class="lead">You're logged in as admin.</p>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

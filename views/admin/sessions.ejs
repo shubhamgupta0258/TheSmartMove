@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Class Sessions — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .prow{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.1rem; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--stroke-soft); margin-bottom:.6rem; }
+  .prow .meta{ font-size:.78rem; color:var(--ink-faint); margin-top:.2rem; }
+  .prow .badge{ font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(212,175,55,.4); border-radius:20px; padding:.15rem .6rem; margin-left:.5rem; }
+  .prow .badge.past{ color:var(--ink-faint); border-color:var(--stroke-soft); }
+  .prow .actions{ display:flex; gap:.5rem; }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'sessions', user: user }) %>
+
+  <main class="admin-main">
+    <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem">
+      <a href="/admin/sessions/new" class="btn btn-gold">Create Session</a>
+    </div>
+
+    <% if (sessions.length === 0) { %>
+      <p class="lead">No class sessions yet. Create one for a program to get started.</p>
+    <% } %>
+
+    <% sessions.forEach(function(s) {
+      const isPast = new Date(s.scheduled_at) < new Date(now);
+      const when = new Date(s.scheduled_at).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+    %>
+      <div class="prow">
+        <div>
+          <div>
+            <b><%= s.title %></b>
+            <span class="badge<%= isPast ? ' past' : '' %>"><%= isPast ? 'Past' : 'Upcoming' %></span>
+          </div>
+          <div class="meta"><%= s.program_name %> · <%= when %></div>
+        </div>
+        <div class="actions">
+          <a href="/admin/sessions/<%= s.id %>/edit" class="btn btn-glass">Edit</a>
+          <form method="POST" action="/admin/sessions/<%= s.id %>/delete" onsubmit="return confirm('Delete ' + <%- JSON.stringify(s.title) %> + '?');">
+            <button type="submit" class="btn btn-glass" style="color:#ff9d9d">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+  </main>
+</div>
+
+</body>
+</html>

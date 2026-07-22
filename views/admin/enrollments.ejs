@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enrollments — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .erow{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.1rem; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--stroke-soft); margin-bottom:.6rem; }
+  .erow .meta{ font-size:.78rem; color:var(--ink-faint); margin-top:.2rem; }
+  .erow .actions{ display:flex; gap:.5rem; }
+  .badge{ font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; border-radius:20px; padding:.15rem .6rem; margin-left:.5rem; }
+  .badge.pending{ color:var(--gold); border:1px solid rgba(212,175,55,.4); }
+  .badge.confirmed{ color:#8ff0b6; border:1px solid rgba(0,200,83,.4); }
+  .badge.rejected{ color:#ff9d9d; border:1px solid rgba(255,80,80,.4); }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'enrollments', user: user }) %>
+
+  <main class="admin-main">
+    <% if (enrollments.length === 0) { %>
+      <p style="color:var(--ink-faint); text-align:center; padding:2rem 0">No enrollments yet.</p>
+    <% } %>
+
+    <% enrollments.forEach(function(e) { %>
+      <div class="erow">
+        <div>
+          <div>
+            <b><%= e.student_name %></b> — <%= e.program_name %>
+            <span class="badge <%= e.status %>"><%= e.status %></span>
+          </div>
+          <div class="meta"><%= e.student_email %> · ₹<%= e.amount ? e.amount.toLocaleString('en-IN') : '—' %> · <%= e.created_at %></div>
+        </div>
+        <% if (e.status === 'pending') { %>
+          <div class="actions">
+            <form method="POST" action="/admin/enrollments/<%= e.id %>/confirm">
+              <button type="submit" class="btn btn-gold">Confirm</button>
+            </form>
+            <form method="POST" action="/admin/enrollments/<%= e.id %>/reject" onsubmit="return confirm('Reject this enrollment?');">
+              <button type="submit" class="btn btn-glass" style="color:#ff9d9d">Reject</button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    <% }); %>
+  </main>
+</div>
+
+</body>
+</html>

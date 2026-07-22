@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .prow{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.1rem; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--stroke-soft); margin-bottom:.6rem; }
+  .prow .meta{ font-size:.78rem; color:var(--ink-faint); margin-top:.2rem; }
+  .prow .actions{ display:flex; gap:.5rem; }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'blog', user: user }) %>
+
+  <main class="admin-main">
+    <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem">
+      <a href="/admin/blog/new" class="btn btn-gold">Write New Post</a>
+    </div>
+
+    <% if (posts.length === 0) { %>
+      <p style="color:var(--ink-faint); text-align:center; padding:2rem 0">No posts yet.</p>
+    <% } %>
+
+    <% posts.forEach(function(p) { %>
+      <div class="prow">
+        <div>
+          <div><b><%= p.title %></b></div>
+          <div class="meta"><%= p.category %> · <%= p.read_time_minutes %> min read · <a href="/blog/<%= p.slug %>" target="_blank" style="color:var(--gold)">/blog/<%= p.slug %></a> · <%= p.published_at %></div>
+        </div>
+        <div class="actions">
+          <a href="/admin/blog/<%= p.id %>/edit" class="btn btn-glass">Edit</a>
+          <form method="POST" action="/admin/blog/<%= p.id %>/delete" onsubmit="return confirm('Delete ' + <%- JSON.stringify(p.title) %> + '? This will remove it from the live site.');">
+            <button type="submit" class="btn btn-glass" style="color:#ff9d9d">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+  </main>
+</div>
+
+</body>
+</html>

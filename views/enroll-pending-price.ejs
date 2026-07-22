@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enroll — The Smart Move</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&f[]=general-sans@600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23D4AF37' stroke-width='5'/%3E%3Cpath d='M50 8 L58 30 L50 24 L42 30 Z' fill='%2300C853'/%3E%3Crect x='47' y='24' width='6' height='40' fill='%2300C853'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='30' font-weight='900' fill='%23D4AF37' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<%- include('partials/nav', { home: false }) %>
+
+<main>
+<div class="wrap" style="max-width:520px; margin-inline:auto; padding-top:clamp(120px,15vw,180px); padding-bottom:5rem; text-align:center">
+  <div class="section-head reveal in" style="margin-inline:auto">
+    <span class="eyebrow"><%= program.name %></span>
+    <h2 style="margin-top:1.1rem">Pricing Coming Soon</h2>
+    <p>We're finalizing pricing for this program. Reach out to us directly and we'll help you get started right away.</p>
+  </div>
+  <a href="https://wa.me/919243486441?text=Hi%20The%20Smart%20Move%2C%20I'd%20like%20to%20know%20the%20pricing%20for%20<%= encodeURIComponent(program.name) %>." class="btn btn-gold" target="_blank" rel="noopener">Ask on WhatsApp</a>
+</div>
+</main>
+
+<%- include('partials/footer', { home: false }) %>
+</body>
+</html>

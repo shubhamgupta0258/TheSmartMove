@@ -1,0 +1,68 @@
+<%
+// `home` (boolean, passed by the including page) controls whether section
+// links are same-page anchors (#about) or point back at the homepage
+// (/#about) — keeps smooth-scroll working on the homepage while still
+// navigating correctly from other pages like /blog.
+const h = typeof home !== 'undefined' && home;
+const link = (anchor) => h ? anchor : '/' + anchor;
+const loggedInStudent = typeof user !== 'undefined' && user && user.role === 'student';
+%>
+<!-- ============================ NAVBAR ============================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="<%= link('#home') %>" class="brand" aria-label="The Smart Move home">
+      <span class="mark" aria-hidden="true">
+        <!-- Compass + SM mark -->
+        <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
+          <circle cx="50" cy="52" r="33" stroke="#D4AF37" stroke-width="4"/>
+          <path d="M50 5 L57 26 L50 21 L43 26 Z" fill="#00C853"/>
+          <rect x="47.2" y="21" width="5.6" height="46" rx="2" fill="#00C853"/>
+          <path d="M50 95 L45 82 L50 85 L55 82 Z" fill="#D4AF37"/>
+          <path d="M12 52 L25 47 L22 52 L25 57 Z" fill="#D4AF37"/>
+          <path d="M88 52 L75 47 L78 52 L75 57 Z" fill="#D4AF37"/>
+          <text x="38" y="63" font-family="Satoshi,Arial" font-size="24" font-weight="900" fill="#D4AF37">S</text>
+          <text x="52" y="70" font-family="Satoshi,Arial" font-size="24" font-weight="900" fill="#D4AF37">M</text>
+        </svg>
+      </span>
+      <span class="word">THE SMART <span class="m">MOVE</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="<%= link('#about') %>">About</a>
+      <a href="<%= link('#markets') %>">Markets</a>
+      <a href="<%= link('#programs') %>">Programs</a>
+      <a href="<%= link('#stories') %>">Stories</a>
+      <a href="<%= link('#insights') %>">Insights</a>
+    </nav>
+
+    <div class="nav-cta">
+      <% if (loggedInStudent) { %>
+        <a href="/student/dashboard" class="btn btn-glass j">My Account</a>
+      <% } else { %>
+        <a href="/login" class="btn btn-glass j">Login</a>
+      <% } %>
+      <a href="<%= link('#community') %>" class="btn btn-glass j">Join Community</a>
+      <a href="<%= link('#book') %>" class="btn btn-gold">Book Free Session</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <div class="wrap">
+    <% if (loggedInStudent) { %>
+      <a href="/student/dashboard">My Account</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+    <% } %>
+    <a href="<%= link('#about') %>">About</a>
+    <a href="<%= link('#markets') %>">Markets</a>
+    <a href="<%= link('#programs') %>">Programs</a>
+    <a href="<%= link('#stories') %>">Success Stories</a>
+    <a href="<%= link('#insights') %>">Market Insights</a>
+    <a href="<%= link('#faq') %>">FAQ</a>
+    <a href="<%= link('#book') %>" class="btn btn-gold btn-block">Book Free Session</a>
+  </div>
+</div>

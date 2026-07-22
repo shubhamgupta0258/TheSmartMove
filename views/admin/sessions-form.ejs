@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><%= session && session.id ? 'Edit Session' : 'Create Session' %> — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'sessions', user: user }) %>
+
+  <main class="admin-main" style="max-width:640px">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem">
+    <p style="color:var(--ink-faint); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase"><%= session && session.id ? 'Edit Session' : 'Create Session' %></p>
+    <a href="/admin/sessions" class="btn btn-glass">Cancel</a>
+  </div>
+
+  <div class="form">
+    <% if (error) { %>
+      <div style="padding:.85rem 1rem; border-radius:12px; background:rgba(255,80,80,.1); border:1px solid rgba(255,80,80,.3); color:#ff9d9d; font-size:.88rem; margin-bottom:1.2rem"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="<%= session && session.id ? '/admin/sessions/' + session.id : '/admin/sessions' %>">
+      <div class="field">
+        <label for="program_id">Program</label>
+        <select id="program_id" name="program_id" required>
+          <option value="">Select a program</option>
+          <% programs.forEach(function(p) { %>
+            <option value="<%= p.id %>" <%= session && Number(session.program_id) === p.id ? 'selected' : '' %>><%= p.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="field">
+        <label for="title">Session Title / Topic</label>
+        <input id="title" name="title" type="text" placeholder="e.g. Candlestick Patterns — Live Session 3" value="<%= session ? session.title : '' %>" required />
+      </div>
+      <div class="field">
+        <label for="scheduled_at">Date &amp; Time</label>
+        <input id="scheduled_at" name="scheduled_at" type="datetime-local" value="<%= session ? session.scheduled_at : '' %>" required />
+      </div>
+      <div class="field">
+        <label for="meet_link">Google Meet Link</label>
+        <input id="meet_link" name="meet_link" type="url" placeholder="https://meet.google.com/xxx-xxxx-xxx" value="<%= session ? session.meet_link : '' %>" required />
+      </div>
+      <button type="submit" class="btn btn-gold btn-block"><%= session && session.id ? 'Save Changes' : 'Create Session' %></button>
+    </form>
+  </div>
+  </main>
+</div>
+
+</body>
+</html>

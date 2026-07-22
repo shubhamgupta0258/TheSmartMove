@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Account — The Smart Move</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&f[]=general-sans@600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23D4AF37' stroke-width='5'/%3E%3Cpath d='M50 8 L58 30 L50 24 L42 30 Z' fill='%2300C853'/%3E%3Crect x='47' y='24' width='6' height='40' fill='%2300C853'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='30' font-weight='900' fill='%23D4AF37' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .enroll-card{ border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--stroke-soft); margin-bottom:.6rem; overflow:hidden; }
+  .enroll-row{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.1rem; }
+  .enroll-badge{ font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; border-radius:20px; padding:.2rem .7rem; }
+  .enroll-badge.pending{ color:var(--gold); border:1px solid rgba(212,175,55,.4); }
+  .enroll-badge.confirmed{ color:#8ff0b6; border:1px solid rgba(0,200,83,.4); }
+  .enroll-badge.rejected{ color:#ff9d9d; border:1px solid rgba(255,80,80,.4); }
+  .class-list{ border-top:1px solid var(--stroke-soft); padding:.3rem 1.1rem .2rem; }
+  .class-row{ display:flex; justify-content:space-between; align-items:center; padding:.7rem 0; }
+  .class-row + .class-row{ border-top:1px solid rgba(255,255,255,.05); }
+  .class-row .meta{ color:var(--ink-faint); font-size:.78rem; margin-top:.15rem; }
+</style>
+</head>
+<body>
+<%- include('../partials/nav', { home: false }) %>
+
+<main>
+<div class="wrap" style="padding-top:clamp(120px,15vw,180px); padding-bottom:5rem; max-width:800px">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem">
+    <div class="section-head reveal in" style="margin:0">
+      <span class="eyebrow">My Account</span>
+      <h2 style="margin-top:.8rem">Welcome, <%= user.name %>.</h2>
+    </div>
+    <form method="POST" action="/student/logout">
+      <button type="submit" class="btn btn-glass">Log Out</button>
+    </form>
+  </div>
+
+  <div class="form reveal in">
+    <h3>My Programs</h3>
+
+    <% if (enrollments.length === 0) { %>
+      <p class="lead">You haven't enrolled in a program yet. Browse programs to get started.</p>
+      <a href="/?browse=1#programs" class="btn btn-gold" style="margin-top:.5rem">Browse Programs</a>
+    <% } else { %>
+      <% enrollments.forEach(function(e) {
+        const classesForProgram = e.status === 'confirmed'
+          ? upcomingSessions.filter(function(s) { return s.program_id === e.program_id; })
+          : [];
+      %>
+        <div class="enroll-card">
+          <div class="enroll-row">
+            <div>
+              <b><%= e.program_name %></b>
+              <div style="color:var(--ink-faint); font-size:.8rem; margin-top:.15rem">₹<%= e.amount ? e.amount.toLocaleString('en-IN') : '—' %></div>
+            </div>
+            <% if (e.status === 'pending') { %>
+              <span class="enroll-badge pending">Pending Confirmation</span>
+            <% } else if (e.status === 'confirmed') { %>
+              <span class="enroll-badge confirmed">Enrolled</span>
+            <% } else { %>
+              <span class="enroll-badge rejected">Not Confirmed</span>
+            <% } %>
+          </div>
+          <% if (classesForProgram.length > 0) { %>
+            <div class="class-list">
+              <% classesForProgram.forEach(function(s) {
+                const when = new Date(s.scheduled_at).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+              %>
+                <div class="class-row">
+                  <div>
+                    <b><%= s.title %></b>
+                    <div class="meta"><%= when %></div>
+                  </div>
+                  <a href="<%= s.meet_link %>" target="_blank" rel="noopener" class="btn btn-gold">Join Class</a>
+                </div>
+              <% }); %>
+            </div>
+          <% } %>
+        </div>
+      <% }); %>
+      <a href="/?browse=1#programs" class="btn btn-glass" style="margin-top:.6rem">Browse More Programs</a>
+    <% } %>
+  </div>
+</div>
+</main>
+
+<%- include('../partials/footer', { home: false }) %>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Login — The Smart Move</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&f[]=general-sans@600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23D4AF37' stroke-width='5'/%3E%3Cpath d='M50 8 L58 30 L50 24 L42 30 Z' fill='%2300C853'/%3E%3Crect x='47' y='24' width='6' height='40' fill='%2300C853'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='30' font-weight='900' fill='%23D4AF37' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .auth-wrap{ max-width:420px; margin-inline:auto; padding-top:clamp(120px,15vw,180px); padding-bottom:5rem; }
+  .auth-error{ padding:.85rem 1rem; border-radius:12px; background:rgba(255,80,80,.1); border:1px solid rgba(255,80,80,.3); color:#ff9d9d; font-size:.88rem; margin-bottom:1.2rem; }
+  .divider{ display:flex; align-items:center; gap:.8rem; margin:1.4rem 0; color:var(--ink-faint); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; }
+  .divider::before, .divider::after{ content:""; flex:1; height:1px; background:var(--stroke-soft); }
+</style>
+</head>
+<body>
+<%- include('../partials/nav', { home: false }) %>
+
+<main>
+<div class="wrap auth-wrap reveal in">
+  <div class="form">
+    <h3>Student Login</h3>
+    <p class="lead">Sign in to access your programs.</p>
+
+    <% if (error) { %>
+      <div class="auth-error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/student/login">
+      <% if (redirectTo) { %><input type="hidden" name="redirect" value="<%= redirectTo %>" /><% } %>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autofocus />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required />
+      </div>
+      <button type="submit" class="btn btn-gold btn-block">Sign In</button>
+    </form>
+
+    <div class="divider">or</div>
+
+    <a href="/student/auth/google<%= redirectTo ? '?redirect=' + encodeURIComponent(redirectTo) : '' %>" class="btn btn-glass btn-block" style="display:flex; align-items:center; justify-content:center; gap:.6rem">
+      <svg width="18" height="18" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.9 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.5 13.2l7.9 6.1C12.3 13.1 17.7 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.5 3-2.2 5.5-4.7 7.2l7.4 5.7C43.9 37.5 46.5 31.5 46.5 24.5z"/>
+        <path fill="#FBBC05" d="M10.4 28.4c-.5-1.4-.8-3-.8-4.4s.3-3 .8-4.4l-7.9-6.1C.9 16.5 0 20.1 0 24s.9 7.5 2.5 10.5l7.9-6.1z"/>
+        <path fill="#34A853" d="M24 48c6.3 0 11.6-2.1 15.5-5.6l-7.4-5.7c-2.1 1.4-4.8 2.3-8.1 2.3-6.3 0-11.7-3.6-13.6-8.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/>
+      </svg>
+      Continue with Google
+    </a>
+
+    <% if (redirectTo) { %>
+      <p class="form-note">New here? <a href="/student/signup?redirect=<%= encodeURIComponent(redirectTo) %>" style="color:var(--gold)">Create an account</a></p>
+    <% } %>
+  </div>
+</div>
+</main>
+
+<%- include('../partials/footer', { home: false }) %>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><%= program && program.id ? 'Edit Program' : 'Add Program' %> — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .checkfield{ display:flex; align-items:center; gap:.6rem; margin-bottom:1rem; }
+  .checkfield input{ width:auto; }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'programs', user: user }) %>
+
+  <main class="admin-main" style="max-width:640px">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem">
+    <p style="color:var(--ink-faint); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase"><%= program && program.id ? 'Edit Program' : 'Add Program' %></p>
+    <a href="/admin/programs" class="btn btn-glass">Cancel</a>
+  </div>
+
+  <div class="form">
+    <% if (error) { %>
+      <div style="padding:.85rem 1rem; border-radius:12px; background:rgba(255,80,80,.1); border:1px solid rgba(255,80,80,.3); color:#ff9d9d; font-size:.88rem; margin-bottom:1.2rem"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="<%= program && program.id ? '/admin/programs/' + program.id : '/admin/programs' %>">
+      <div class="field">
+        <label for="name">Program Name</label>
+        <input id="name" name="name" type="text" value="<%= program ? program.name : '' %>" required />
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="level">Level Tag</label>
+          <input id="level" name="level" type="text" placeholder="e.g. Beginner, Advanced, 1-on-1" value="<%= program ? program.level : '' %>" required />
+        </div>
+        <div class="field">
+          <label for="price">Price (₹, optional)</label>
+          <input id="price" name="price" type="number" min="0" placeholder="Leave blank if not decided" value="<%= program && program.price ? program.price : '' %>" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required><%= program ? program.description : '' %></textarea>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="duration">Duration</label>
+          <input id="duration" name="duration" type="text" placeholder="e.g. 4–6 Weeks" value="<%= program ? program.duration : '' %>" required />
+        </div>
+        <div class="field">
+          <label for="mode">Mode</label>
+          <input id="mode" name="mode" type="text" placeholder="e.g. Online / Offline" value="<%= program ? program.mode : '' %>" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="features">Feature Bullets (one per line)</label>
+        <textarea id="features" name="features" placeholder="One feature per line" required><%= program ? program.features : '' %></textarea>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="cta_text">Button Text</label>
+          <input id="cta_text" name="cta_text" type="text" placeholder="e.g. Enroll Now" value="<%= program ? program.cta_text : '' %>" required />
+        </div>
+        <div class="field">
+          <label for="sort_order">Display Order</label>
+          <input id="sort_order" name="sort_order" type="number" value="<%= program && program.sort_order ? program.sort_order : 0 %>" />
+        </div>
+      </div>
+      <div class="checkfield">
+        <input id="is_featured" name="is_featured" type="checkbox" <%= program && program.is_featured ? 'checked' : '' %> />
+        <label for="is_featured" style="margin:0; text-transform:none; font-size:.9rem; color:var(--ink)">Highlight as featured/most popular</label>
+      </div>
+      <button type="submit" class="btn btn-gold btn-block"><%= program && program.id ? 'Save Changes' : 'Add Program' %></button>
+    </form>
+  </div>
+  </main>
+</div>
+
+</body>
+</html>

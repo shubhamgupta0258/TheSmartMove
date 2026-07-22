@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><%= post && post.id ? 'Edit Post' : 'Write New Post' %> — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .field textarea#body{ min-height:280px; }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'blog', user: user }) %>
+
+  <main class="admin-main" style="max-width:680px">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem">
+    <p style="color:var(--ink-faint); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase"><%= post && post.id ? 'Edit Post' : 'Write New Post' %></p>
+    <a href="/admin/blog" class="btn btn-glass">Cancel</a>
+  </div>
+
+  <div class="form">
+    <% if (error) { %>
+      <div style="padding:.85rem 1rem; border-radius:12px; background:rgba(255,80,80,.1); border:1px solid rgba(255,80,80,.3); color:#ff9d9d; font-size:.88rem; margin-bottom:1.2rem"><%= error %></div>
+    <% } %>
+
+    <% if (post && post.slug) { %>
+      <p style="color:var(--ink-faint); font-size:.82rem; margin-bottom:1.2rem">Live at: <a href="/blog/<%= post.slug %>" target="_blank" style="color:var(--gold)">/blog/<%= post.slug %></a></p>
+    <% } %>
+
+    <form method="POST" action="<%= post && post.id ? '/admin/blog/' + post.id : '/admin/blog' %>">
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" value="<%= post ? post.title : '' %>" required />
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="category">Category</label>
+          <input id="category" name="category" type="text" placeholder="e.g. Technical Analysis, Psychology, Risk Management" value="<%= post ? post.category : '' %>" required />
+        </div>
+        <div class="field">
+          <label for="read_time_minutes">Read Time (minutes)</label>
+          <input id="read_time_minutes" name="read_time_minutes" type="number" min="1" value="<%= post ? post.read_time_minutes : '' %>" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="body">Article Body</label>
+        <textarea id="body" name="body" placeholder="Write the article here. Leave a blank line between paragraphs." required><%= post ? post.body : '' %></textarea>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="author">Author (optional)</label>
+          <input id="author" name="author" type="text" placeholder="e.g. The Smart Move Team" value="<%= post && post.author ? post.author : '' %>" />
+        </div>
+        <div class="field">
+          <label for="cover_image">Cover Image URL (optional)</label>
+          <input id="cover_image" name="cover_image" type="text" placeholder="https://…" value="<%= post && post.cover_image ? post.cover_image : '' %>" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-gold btn-block"><%= post && post.id ? 'Save Changes' : 'Publish Post' %></button>
+    </form>
+  </div>
+  </main>
+</div>
+
+</body>
+</html>

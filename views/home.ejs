@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Smart Move — India's Premium Trading Education &amp; Community</title>
+<meta name="description" content="The Smart Move is a premium trading education institute and community in Bhilai, Chhattisgarh. Master stocks, forex, crypto, commodities &amp; indices with structured learning, live mentorship and a thriving trader community. Book a free consultation." />
+<meta name="theme-color" content="#0B0B0B" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Smart Move — Premium Trading Education &amp; Community" />
+<meta property="og:description" content="Every successful trader starts with the right direction. Structured education, expert mentorship and a community built for disciplined traders." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts: Satoshi + General Sans (display / data) via Fontshare, Inter (body) via Google -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900,500&f[]=general-sans@600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Favicon: inline SVG compass mark -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23D4AF37' stroke-width='5'/%3E%3Cpath d='M50 8 L58 30 L50 24 L42 30 Z' fill='%2300C853'/%3E%3Crect x='47' y='24' width='6' height='40' fill='%2300C853'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='30' font-weight='900' fill='%23D4AF37' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E" />
+
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<% var home = true; %>
+
+<%- include('partials/nav', { home: true }) %>
+
+<main>
+<!-- ============================= HERO ============================= -->
+<section class="hero" id="home">
+  <svg class="compass-ghost" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="66" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6"/>
+    <path d="M100 14 L110 90 L100 78 L90 90 Z M100 186 L90 110 L100 122 L110 110 Z" fill="currentColor"/>
+    <path d="M14 100 L90 90 L78 100 L90 110 Z M186 100 L110 110 L122 100 L110 90 Z" fill="currentColor"/>
+  </svg>
+
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal">India's Premium Trading Education &amp; Community</span>
+      <h1 class="reveal d1">
+        <span class="line">Every Successful Trader</span>
+        <span class="line">Starts With The</span>
+        <span class="line gold">Right Direction.</span>
+      </h1>
+      <p class="hero-sub reveal d2">Master the markets with structured education, practical strategy, expert mentorship, and a community of traders built for long-term, disciplined success.</p>
+      <div class="hero-cta reveal d3">
+        <a href="#book" class="btn btn-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book a Free Consultation
+        </a>
+        <a href="#programs" class="btn btn-glass">Explore Programs</a>
+      </div>
+      <div class="hero-meta reveal d4">
+        <div class="stat"><div class="num" data-count="500" data-suffix="+">0</div><div class="lbl">Students Guided</div></div>
+        <div class="stat"><div class="num" data-count="100" data-suffix="+">0</div><div class="lbl">Live Sessions</div></div>
+        <div class="stat"><div class="num"><span class="grn"><span data-count="95">0</span>%</span></div><div class="lbl">Satisfaction</div></div>
+      </div>
+    </div>
+
+    <div class="dash-wrap reveal d2">
+      <div class="dash">
+        <div class="float a">
+          <span class="fi" style="background:rgba(0,200,83,.15);color:var(--green)">
+            <svg viewBox="0 0 24 24" width="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg>
+          </span>
+          <div><div class="fk">Profit</div><div class="fv" style="color:var(--green)">+18.4%</div></div>
+        </div>
+        <div class="float b">
+          <span class="fi" style="background:rgba(212,175,55,.16);color:var(--gold)">
+            <svg viewBox="0 0 24 24" width="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>
+          </span>
+          <div><div class="fk">Risk Score</div><div class="fv" style="color:var(--gold)">Low</div></div>
+        </div>
+
+        <div class="dash-top">
+          <div class="pair"><span class="dot-red"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="dash-sym">NIFTY 50 <span class="up">▲ +0.92%</span></div>
+        </div>
+        <div class="chart-box"><canvas id="chart" width="520" height="210"></canvas></div>
+        <div class="dash-stats">
+          <div class="mini"><div class="k">Accuracy</div><div class="v g">92%</div></div>
+          <div class="mini"><div class="k">Trend</div><div class="v gold">Bullish</div></div>
+          <div class="mini"><div class="k">Portfolio</div><div class="v">₹4.8L</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust bar -->
+  <div class="wrap trust reveal">
+    <div class="trust-strip">
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Offline &amp; Online Learning</span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Expert Mentorship</span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Practical, Real-Market Learning</span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Community Support</span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Based in Bhilai</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ABOUT ============================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <svg class="big-compass" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <circle cx="100" cy="100" r="82" stroke="currentColor" stroke-width="2" opacity=".5"/>
+        <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 7" opacity=".7"/>
+        <path d="M100 30 L112 100 L100 88 L88 100 Z" fill="#00C853"/>
+        <path d="M100 170 L88 100 L100 112 L112 100 Z" fill="currentColor"/>
+        <path d="M30 100 L100 88 L88 100 L100 112 Z" fill="currentColor" opacity=".8"/>
+        <path d="M170 100 L100 112 L112 100 L100 88 Z" fill="currentColor" opacity=".8"/>
+        <circle cx="100" cy="100" r="6" fill="#F5C542"/>
+      </svg>
+      <div class="scan"></div>
+    </div>
+
+    <div>
+      <span class="eyebrow reveal">About The Smart Move</span>
+      <div class="section-head reveal d1" style="margin-bottom:1rem">
+        <h2>More Than a<br>Trading Institute.</h2>
+        <p>The Smart Move is a premium trading education institute and community, dedicated to helping individuals build practical market skills with confidence and discipline. We believe successful trading is built on education, strategy, and risk management — not shortcuts.</p>
+      </div>
+      <ul class="about-pts">
+        <li class="reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></span>
+          <div><b>Structured, not scattered.</b><p>A clear learning path that takes you from fundamentals to disciplined, repeatable execution.</p></div></li>
+        <li class="reveal d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><b>Risk management first.</b><p>We teach you to protect capital before chasing returns — the habit that keeps traders in the game.</p></div></li>
+        <li class="reveal d4"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+          <div><b>Learning that continues.</b><p>A supportive community means your growth doesn't stop when the classroom does.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MARKETS ============================ -->
+<section id="markets">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Markets We Teach</span>
+      <h2>Learn the Skills<br>That Matter.</h2>
+      <p>Structured coverage across the markets that build a complete, adaptable trader.</p>
+    </div>
+    <div class="markets">
+      <article class="mcard reveal" data-market="stocks" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="7"/><rect x="12" y="6" width="3" height="11"/><rect x="17" y="12" width="3" height="5"/></svg></div>
+        <h3>Stocks</h3><p>Market fundamentals, price action &amp; equity trading strategy.</p>
+      </article>
+      <article class="mcard reveal d1" data-market="forex" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
+        <h3>Forex</h3><p>Global currency markets and technical analysis.</p>
+      </article>
+      <article class="mcard reveal d2" data-market="crypto" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 8h4a2 2 0 0 1 0 4H9zm0 4h5a2 2 0 0 1 0 4H9zM9 6v12M12 4v2M12 18v2"/></svg></div>
+        <h3>Crypto</h3><p>Digital assets navigated with structured risk management.</p>
+      </article>
+      <article class="mcard reveal d3" data-market="commodities" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15h16l-2 5H6zM6 15l2-6h8l2 6M9 9V6h6v3"/></svg></div>
+        <h3>Commodities</h3><p>Gold, silver, crude oil &amp; commodity trading.</p>
+      </article>
+      <article class="mcard reveal d4" data-market="indices" tabindex="0" role="button" aria-haspopup="dialog">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <h3>Indices</h3><p>Index movements and macro market trends.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= LEARNING JOURNEY ======================= -->
+<section id="journey" class="journey">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Your Trading Journey</span>
+      <h2>A Clear Path,<br>Step by Step.</h2>
+      <p>No guesswork. Every stage is designed to build the next — from first principles to a disciplined trader.</p>
+    </div>
+    <div class="rail reveal d1">
+      <div class="track" id="journeyTrack">
+        <div class="step"><span class="n">STAGE 01</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4-4"/></svg></span><h3>Discover Markets</h3><p>Understand how markets work and where you fit.</p></div>
+        <div class="step"><span class="n">STAGE 02</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h8M8 11h6"/></svg></span><h3>Build Fundamentals</h3><p>The core concepts every trader must own.</p></div>
+        <div class="step"><span class="n">STAGE 03</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></span><h3>Technical Analysis</h3><p>Read charts, patterns and price action with intent.</p></div>
+        <div class="step"><span class="n">STAGE 04</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></span><h3>Risk Management</h3><p>Protect capital first — position sizing &amp; discipline.</p></div>
+        <div class="step"><span class="n">STAGE 05</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21h6M12 3a6 6 0 0 1 3 11v3H9v-3a6 6 0 0 1 3-11z"/></svg></span><h3>Trading Psychology</h3><p>Trade with knowledge, not emotion.</p></div>
+        <div class="step"><span class="n">STAGE 06</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span><h3>Live Market Practice</h3><p>Apply your system in real conditions.</p></div>
+        <div class="step"><span class="n">STAGE 07</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><h3>Continuous Mentorship</h3><p>Ongoing guidance to sharpen and adapt.</p></div>
+        <div class="step"><span class="n">STAGE 08</span><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8 14l-2 8 6-3 6 3-2-8"/></svg></span><h3>Disciplined Trader</h3><p>Consistent, confident, repeatable execution.</p></div>
+      </div>
+      <p class="rail-hint">← scroll to follow the full journey →</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROGRAMS =========================== -->
+<section id="programs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Programs</span>
+      <h2>Designed for<br>Every Trader.</h2>
+      <p>Each program is carefully structured to build practical skill through guided learning and real-market understanding.</p>
+    </div>
+    <div class="programs">
+      <% programs.forEach(function(p, i) { %>
+        <article class="pcard<%= p.is_featured ? ' featured' : '' %> reveal<%= i > 0 ? ' d' + i : '' %>">
+          <span class="plevel"><%= p.level %></span>
+          <h3><%= p.name %></h3>
+          <p class="pdesc"><%= p.description %></p>
+          <div class="pmeta">
+            <div class="pm"><div class="k">Duration</div><div class="v"><%= p.duration %></div></div>
+            <div class="pm"><div class="k">Mode</div><div class="v"><%= p.mode %></div></div>
+            <% if (p.price) { %>
+              <div class="pm"><div class="k">Price</div><div class="v">₹<%= p.price.toLocaleString('en-IN') %></div></div>
+            <% } %>
+          </div>
+          <ul class="plist">
+            <% p.features.split('\n').forEach(function(f) { %>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><%= f %></li>
+            <% }); %>
+          </ul>
+          <a href="/enroll/<%= p.id %>" class="btn <%= p.is_featured ? 'btn-gold' : 'btn-glass' %> btn-block"><%= p.cta_text %></a>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= WHY THE SMART MOVE ======================== -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why The Smart Move</span>
+      <h2>Built on Principles,<br>Not Promises.</h2>
+      <p>The values that shape every session, every strategy and every trader who learns with us.</p>
+    </div>
+    <div class="why">
+      <article class="wcard reveal"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div><h3>Precision</h3><p>Disciplined habits and clean setups over noise and impulse.</p></article>
+      <article class="wcard reveal d1"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div><h3>Strategy</h3><p>Repeatable systems designed for long-term consistency.</p></article>
+      <article class="wcard reveal d2"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><h3>Risk Management</h3><p>Protecting capital comes first — always.</p></article>
+      <article class="wcard reveal"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Community</h3><p>Learn together, grow together, stay accountable.</p></article>
+      <article class="wcard reveal d1"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4 12H2M22 12h-2M6 6L4 4M20 20l-2-2M6 18l-2 2M20 4l-2 2"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Confidence</h3><p>Understand the market before you enter it.</p></article>
+      <article class="wcard reveal d2"><div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><h3>Continuous Growth</h3><p>Improve consistently through structured learning.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== COMMUNITY =========================== -->
+<section id="community">
+  <div class="wrap">
+    <div class="comm-shell reveal">
+      <div class="comm-grid">
+        <div>
+          <span class="eyebrow">The Smart Move Community</span>
+          <div class="section-head" style="margin:1rem 0 0">
+            <h2>Trading is<br>Better Together.</h2>
+            <p>Learning doesn't end after the classroom. Join a community of passionate traders who share ideas, analyse markets, and keep learning every day.</p>
+          </div>
+          <ul class="comm-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Daily market discussions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Live trading sessions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Mentor support &amp; weekly reviews</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Networking with serious traders</li>
+          </ul>
+          <a href="https://wa.me/919243486441?text=Hi%20The%20Smart%20Move%2C%20I'd%20like%20to%20join%20the%20community." class="btn btn-green" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.5 11 11 0 0 0 4.3 3.8c1.6.6 1.8.5 2.1.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
+            Join Our Community
+          </a>
+        </div>
+
+        <div class="chat-stack" aria-hidden="true">
+          <div class="chatline live"><span class="av" style="background:var(--green-grad)">R</span><div><div class="who">Rahul <span class="role">Live Session <span class="pulse"></span></span></div><div class="msg">Breaking down today's Nifty setup — watch the 22,400 zone.</div></div></div>
+          <div class="chatline"><span class="av" style="background:var(--gold-grad)">P</span><div><div class="who">Priya <span class="role">Member</span></div><div class="msg">Booked profit on the breakout, risk was tight. Thanks mentor 🙏</div></div></div>
+          <div class="chatline"><span class="av" style="background:linear-gradient(135deg,#5865F2,#38408f)">A</span><div><div class="who">Amit <span class="role">Member</span></div><div class="msg">Sharing my journal from this week for review.</div></div></div>
+          <div class="chatline live"><span class="av" style="background:var(--green-grad)">M</span><div><div class="who">Mentor Desk <span class="role">Daily Analysis <span class="pulse"></span></span></div><div class="msg">Pre-market notes posted. Focus on discipline over prediction.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FOUNDER ============================ -->
+<section id="founder">
+  <div class="wrap founder-grid">
+    <div class="portrait reveal">
+      <div class="ring"></div>
+      <div class="mono">S</div>
+      <div class="plate"><b>Shubhangi</b><span>Founder &amp; CEO</span></div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Meet Our Founder</span>
+      <p class="founder-quote reveal d1">"We don't just teach strategies. We build the <span class="gold">mindset and discipline</span> that support long-term growth in the markets."</p>
+      <p class="reveal d2" style="color:var(--ink-soft)">The Smart Move was founded with a vision to create a learning environment where aspiring traders can develop the knowledge, discipline, and confidence needed to navigate financial markets responsibly. The focus has always been on responsible, sustainable growth — not shortcuts.</p>
+      <div class="sig reveal d3">Shubhangi</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= TESTIMONIALS ========================= -->
+<section id="stories">
+  <div class="wrap">
+    <div class="section-head reveal" style="display:flex; justify-content:space-between; align-items:flex-end; max-width:none; gap:2rem; flex-wrap:wrap">
+      <div style="max-width:560px">
+        <span class="eyebrow">Success Stories</span>
+        <h2 style="margin-top:1.1rem">Real People.<br>Real Progress.</h2>
+        <p>The greatest measure of our success is the growth of our students.</p>
+      </div>
+      <div class="tnav">
+        <button id="tPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button id="tNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="tcarousel reveal d1">
+      <div class="ttrack" id="tTrack">
+        <article class="tcard"><div class="stars">★★★★★</div><blockquote>"I came in knowing nothing. The structured path and risk-first approach completely changed how I see the market. I finally trade with a plan."</blockquote><div class="person"><span class="av" style="background:var(--gold-grad)">A</span><div><b>Ankit Sharma</b><span>Beginner Program</span></div></div></article>
+        <article class="tcard"><div class="stars">★★★★★</div><blockquote>"The mentorship is the difference. Having someone review my journal every week made me consistent for the first time in three years."</blockquote><div class="person"><span class="av" style="background:var(--green-grad)">N</span><div><b>Neha Verma</b><span>Professional Mentorship</span></div></div></article>
+        <article class="tcard"><div class="stars">★★★★★</div><blockquote>"It's not a get-rich course. It's real education. The community keeps me disciplined and I've learnt to respect my stop-loss."</blockquote><div class="person"><span class="av" style="background:linear-gradient(135deg,#5865F2,#38408f)">R</span><div><b>Rohit Deshmukh</b><span>Advanced Program</span></div></div></article>
+        <article class="tcard"><div class="stars">★★★★★</div><blockquote>"Offline classes in Bhilai plus the online community is the perfect mix. I never feel like I'm learning alone."</blockquote><div class="person"><span class="av" style="background:var(--gold-grad)">S</span><div><b>Sneha Patel</b><span>Community Member</span></div></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BLOG ============================== -->
+<section id="insights">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Market Insights</span>
+      <h2>Stay Ahead of<br>the Markets.</h2>
+      <p>Educational articles, trading insights and practical strategy to help you become a more informed trader.</p>
+    </div>
+    <div class="blog">
+      <% posts.forEach(function(post, i) { %>
+        <article class="acard reveal<%= i > 0 ? ' d' + i : '' %>">
+          <div class="thumb"><span class="cat"><%= post.category %></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><rect x="7" y="10" width="2.5" height="7"/><rect x="12" y="6" width="2.5" height="11"/><rect x="17" y="12" width="2.5" height="5"/></svg></div>
+          <div class="body">
+            <h3><%= post.title %></h3>
+            <div class="meta"><span><%= post.category %></span><span>·</span><span><%= post.read_time_minutes %> min read</span></div>
+            <a href="/blog/<%= post.slug %>" class="read">Read article <svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FAQ ============================== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-inline:auto; text-align:center">
+      <span class="eyebrow">FAQ</span>
+      <h2 style="margin-top:1.1rem">Questions,<br>Answered.</h2>
+    </div>
+    <div class="faq reveal d1">
+      <div class="faq-item"><button class="faq-q">Do I need prior trading experience?<span class="plus"></span></button><div class="faq-a"><p>No. Our programs are designed for both complete beginners and experienced traders looking to refine their strategy.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Are classes available online?<span class="plus"></span></button><div class="faq-a"><p>Yes. We offer both online and offline learning, so you can learn from Bhilai in person or from anywhere across India.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What markets do you teach?<span class="plus"></span></button><div class="faq-a"><p>Stocks, Forex, Cryptocurrency, Commodities and Indices — with a strong foundation in risk management throughout.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Will I receive mentorship?<span class="plus"></span></button><div class="faq-a"><p>Yes. Students receive guidance through structured mentoring sessions, and our Professional Mentorship program adds personalised one-on-one support.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I join from any city?<span class="plus"></span></button><div class="faq-a"><p>Absolutely. Our online programs and community are available across India, so distance is never a barrier.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ========================== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Let's Connect</span><h2 style="margin-top:1.1rem">Talk to<br>Our Team.</h2><p>Take the first step toward becoming a more confident, disciplined trader.</p></div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="k">Location</div><div class="v">Bhilai, Chhattisgarh</div></div></div>
+        <div class="info-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><div class="k">Phone</div><a class="v" href="tel:+919243486441">+91 92434 86441</a></div></div>
+        <div class="info-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><div class="k">Business Hours</div><div class="v">Mon – Sat · 10:00 AM – 7:00 PM</div></div></div>
+        <div class="map">
+          <iframe title="The Smart Move location — Bhilai" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bhilai,Chhattisgarh&output=embed"></iframe>
+        </div>
+      </div>
+
+      <!-- Book Free Consultation form -->
+      <div class="form reveal d1" id="book">
+        <h3>Book a Free Consultation</h3>
+        <p class="lead">Tell us where you are in your journey. We'll help you find the right direction.</p>
+        <form id="leadForm" novalidate>
+          <div class="row2">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your full name" required /></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="+91 …" required /></div>
+          </div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" /></div>
+          <div class="row2">
+            <div class="field"><label for="exp">Trading Experience</label>
+              <select id="exp" name="exp"><option value="">Select…</option><option>Complete Beginner</option><option>Some Experience</option><option>Active Trader</option></select></div>
+            <div class="field"><label for="time">Preferred Time</label>
+              <select id="time" name="time"><option value="">Select…</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+          </div>
+          <div class="field"><label for="goals">Your Goals</label><textarea id="goals" name="goals" placeholder="What do you want to achieve as a trader?"></textarea></div>
+          <button type="submit" class="btn btn-gold btn-block">Book Free Session</button>
+          <p class="form-note">Or WhatsApp us directly at <a href="https://wa.me/919243486441" style="color:var(--gold)">+91 92434 86441</a></p>
+          <div class="form-success" id="formSuccess">✓ Thank you! Your request has been captured. Our team will reach out shortly to confirm your free session.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== FINAL CTA ========================== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="comm-shell reveal" style="text-align:center; background:radial-gradient(120% 160% at 50% 0%,rgba(212,175,55,.14),transparent 55%),linear-gradient(160deg,#141414,#0a0a0a)">
+      <span class="eyebrow" style="margin-bottom:1.2rem">Your Next Smart Move</span>
+      <h2 style="font-size:clamp(2rem,4.6vw,3.4rem); max-width:18ch; margin:0 auto 1rem">Ready to Make Your <span class="gold">Next Smart Move?</span></h2>
+      <p style="color:var(--ink-soft); max-width:52ch; margin:0 auto 2rem">Take the first step toward becoming a more confident and disciplined trader — with expert guidance and a community that supports your growth.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a href="#book" class="btn btn-gold">Book Your Free Consultation</a>
+        <a href="tel:+919243486441" class="btn btn-glass">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          Call Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ FOOTER =========================== -->
+<%- include('partials/footer', { home: true }) %>
+</body>
+</html>

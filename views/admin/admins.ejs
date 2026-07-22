@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manage Admins — The Smart Move</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .admin-row{ display:flex; justify-content:space-between; align-items:center; padding:.9rem 1.1rem; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--stroke-soft); margin-bottom:.6rem; }
+  .admin-row .you{ color:var(--gold); font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; margin-left:.5rem; }
+  .admin-row .super{ color:#8ff0b6; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; margin-left:.5rem; border:1px solid rgba(0,200,83,.4); border-radius:20px; padding:.1rem .55rem; }
+  .admin-row .status{ font-size:.75rem; color:var(--ink-faint); margin-top:.15rem; }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'admins', user: user }) %>
+
+  <main class="admin-main">
+  <% if (error) { %>
+    <div style="padding:.85rem 1rem; border-radius:12px; background:rgba(255,80,80,.1); border:1px solid rgba(255,80,80,.3); color:#ff9d9d; font-size:.88rem; margin-bottom:1.2rem"><%= error %></div>
+  <% } %>
+  <% if (success) { %>
+    <div class="form-success show"><%= success %></div>
+  <% } %>
+
+  <div class="form" style="margin-bottom:1.4rem">
+    <h3>Current Admins</h3>
+    <div style="margin-top:1.2rem">
+      <% admins.forEach(function(a) { %>
+        <div class="admin-row">
+          <div>
+            <div>
+              <b><%= a.name %></b>
+              <% if (a.is_super_admin) { %><span class="super">Super Admin</span><% } %>
+              <% if (a.id === user.id) { %><span class="you">You</span><% } %>
+            </div>
+            <div class="status"><%= a.email %> · <%= a.google_id ? 'Linked to Google' : 'Not signed in yet' %></div>
+          </div>
+          <% if (a.id !== user.id) { %>
+            <form method="POST" action="/admin/admins/<%= a.id %>/remove" onsubmit="return confirm('Remove ' + <%- JSON.stringify(a.name) %> + ' as admin?');">
+              <button type="submit" class="btn btn-glass" style="color:#ff9d9d">Remove</button>
+            </form>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <div class="form" style="max-width:480px">
+    <h3>Add a New Admin</h3>
+    <p class="lead">They'll be able to log in with "Continue with Google" using this exact email address.</p>
+    <form method="POST" action="/admin/admins">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Full name" required />
+      </div>
+      <div class="field">
+        <label for="email">Gmail Address</label>
+        <input id="email" name="email" type="email" placeholder="name@gmail.com" required />
+      </div>
+      <button type="submit" class="btn btn-gold btn-block">Add Admin</button>
+    </form>
+  </div>
+  </main>
+</div>
+
+</body>
+</html>

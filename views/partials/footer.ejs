@@ -1,0 +1,109 @@
+<%
+const h = typeof home !== 'undefined' && home;
+const link = (anchor) => h ? anchor : '/' + anchor;
+%>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="<%= link('#home') %>" class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="40" height="40" fill="none">
+              <circle cx="50" cy="52" r="33" stroke="#D4AF37" stroke-width="4"/>
+              <path d="M50 5 L57 26 L50 21 L43 26 Z" fill="#00C853"/>
+              <rect x="47.2" y="21" width="5.6" height="46" rx="2" fill="#00C853"/>
+              <path d="M50 95 L45 82 L50 85 L55 82 Z" fill="#D4AF37"/>
+              <path d="M12 52 L25 47 L22 52 L25 57 Z" fill="#D4AF37"/>
+              <path d="M88 52 L75 47 L78 52 L75 57 Z" fill="#D4AF37"/>
+              <text x="38" y="63" font-family="Satoshi,Arial" font-size="24" font-weight="900" fill="#D4AF37">S</text>
+              <text x="52" y="70" font-family="Satoshi,Arial" font-size="24" font-weight="900" fill="#D4AF37">M</text>
+            </svg>
+          </span>
+          <span class="word">THE SMART <span class="m">MOVE</span></span>
+        </a>
+        <p>Every successful trader starts with the right direction. Premium trading education &amp; community, based in Bhilai.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/thesmartmove2026/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.youtube.com/@thesmartmove2026" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3-.4-4.4a2.6 2.6 0 0 0-1.8-1.8C19.4 5.4 12 5.4 12 5.4s-7.4 0-8.8.4A2.6 2.6 0 0 0 1.4 7.6C1 9 1 12 1 12s0 3 .4 4.4a2.6 2.6 0 0 0 1.8 1.8c1.4.4 8.8.4 8.8.4s7.4 0 8.8-.4a2.6 2.6 0 0 0 1.8-1.8C23 15 23 12 23 12zM10 15V9l5 3z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="<%= link('#about') %>">About</a>
+        <a href="<%= link('#markets') %>">Markets</a>
+        <a href="<%= link('#programs') %>">Programs</a>
+        <a href="<%= link('#community') %>">Community</a>
+        <a href="<%= link('#stories') %>">Success Stories</a>
+        <a href="<%= link('#insights') %>">Market Insights</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Programs</h4>
+        <a href="<%= link('#programs') %>">Foundation</a>
+        <a href="<%= link('#programs') %>">Strategy</a>
+        <a href="<%= link('#programs') %>">Mentorship</a>
+        <a href="<%= link('#faq') %>">FAQ</a>
+        <a href="<%= link('#book') %>">Book a Session</a>
+      </div>
+
+      <div class="foot-col foot-contact">
+        <h4>Contact</h4>
+        <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Bhilai, Chhattisgarh</div>
+        <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> <a href="tel:+919243486441">+91 92434 86441</a></div>
+        <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Mon–Sat · 10AM–7PM</div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>© <span id="year"></span> The Smart Move. All rights reserved. <span style="letter-spacing:.04em">· EDUCATION ONLY · NOT SEBI REGISTERED · NOT INVESTMENT ADVICE</span></p>
+      <div class="legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================== FLOATING ACTIONS ======================= -->
+<div class="fabs">
+  <a class="fab wa" href="https://wa.me/919243486441?text=Hi%20The%20Smart%20Move%2C%20I'd%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="tip">Chat on WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.5 11 11 0 0 0 4.3 3.8c1.6.6 1.8.5 2.1.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
+  </a>
+  <a class="fab call" href="tel:+919243486441" aria-label="Call">
+    <span class="tip">Call Now</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+  <a class="fab book" href="<%= link('#book') %>" aria-label="Book a session">
+    <span class="tip">Book Free Session</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+  </a>
+</div>
+
+<!-- ====================== EXIT INTENT MODAL ====================== -->
+<div class="modal-veil" id="exitModal">
+  <div class="modal">
+    <button class="close" id="modalClose" aria-label="Close">✕</button>
+    <span class="mmark">
+      <svg viewBox="0 0 100 100" width="56" height="56" fill="none">
+        <circle cx="50" cy="52" r="33" stroke="#D4AF37" stroke-width="4"/>
+        <path d="M50 5 L57 26 L50 21 L43 26 Z" fill="#00C853"/>
+        <rect x="47.2" y="21" width="5.6" height="46" rx="2" fill="#00C853"/>
+      </svg>
+    </span>
+    <h3>Before You Go…</h3>
+    <p>Book a <b style="color:var(--gold)">free consultation</b> with our team and get a clear direction for your trading journey — no cost, no pressure.</p>
+    <a href="<%= link('#book') %>" class="btn btn-gold" id="modalCta">Book My Free Session</a>
+    <small>Every successful trader starts with the right direction.</small>
+  </div>
+</div>
+
+<!-- ====================== MARKET INFO MODAL ======================= -->
+<div class="modal-veil" id="marketModal">
+  <div class="modal market-modal" role="dialog" aria-modal="true" aria-labelledby="marketModalTitle">
+    <button class="close" id="marketModalClose" aria-label="Close">✕</button>
+    <span class="eyebrow" id="marketModalEyebrow">Market</span>
+    <h3 id="marketModalTitle" style="margin-top:.6rem">Market</h3>
+    <ol class="market-steps" id="marketModalSteps"></ol>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>

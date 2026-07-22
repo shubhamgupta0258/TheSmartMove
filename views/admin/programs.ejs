@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Programs — The Smart Move Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .prow{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.1rem; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--stroke-soft); margin-bottom:.6rem; }
+  .prow .meta{ font-size:.78rem; color:var(--ink-faint); margin-top:.2rem; }
+  .prow .badge{ font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(212,175,55,.4); border-radius:20px; padding:.15rem .6rem; margin-left:.5rem; }
+  .prow .actions{ display:flex; gap:.5rem; }
+</style>
+</head>
+<body style="background:var(--bg)">
+
+<div class="admin-shell" id="adminShell">
+  <%- include('partials/sidebar', { active: 'programs', user: user }) %>
+
+  <main class="admin-main">
+    <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem">
+      <a href="/admin/programs/new" class="btn btn-gold">Add Program</a>
+    </div>
+
+    <% programs.forEach(function(p) { %>
+      <div class="prow">
+        <div>
+          <div>
+            <b><%= p.name %></b>
+            <% if (p.is_featured) { %><span class="badge">Featured</span><% } %>
+          </div>
+          <div class="meta"><%= p.level %> · <%= p.duration %> · <%= p.mode %><%= p.price ? ' · ₹' + p.price.toLocaleString('en-IN') : ' · Price not set' %></div>
+        </div>
+        <div class="actions">
+          <a href="/admin/programs/<%= p.id %>/edit" class="btn btn-glass">Edit</a>
+          <form method="POST" action="/admin/programs/<%= p.id %>/delete" onsubmit="return confirm('Delete ' + <%- JSON.stringify(p.name) %> + '? This will remove it from the live site.');">
+            <button type="submit" class="btn btn-glass" style="color:#ff9d9d">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+  </main>
+</div>
+
+</body>
+</html>
