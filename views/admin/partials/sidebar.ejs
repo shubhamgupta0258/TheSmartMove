@@ -24,7 +24,35 @@ const isActive = (key) => active === key ? ' active' : '';
   .side-link.logout-link{ padding:0; }
   .side-link.logout-link button{ background:none; border:none; padding:.7rem .78rem; margin:0; font:inherit; color:inherit; display:flex; align-items:center; gap:.85rem; cursor:pointer; width:100%; text-align:left; }
   .admin-main{ flex:1; min-width:0; padding:2.6rem clamp(1.2rem,4vw,3rem) 4rem; }
+
+  .mobile-topbar{ display:none; }
+  .sidebar-backdrop{ display:none; }
+
+  /* Below this width, the sidebar becomes an off-canvas overlay instead of
+     squeezing the main content into a sliver of remaining space. */
+  @media (max-width:768px){
+    .mobile-topbar{ display:flex; align-items:center; gap:.8rem; position:sticky; top:0; z-index:120; padding:.9rem 1.1rem; background:var(--bg-2); border-bottom:1px solid var(--stroke-soft); }
+    .mobile-topbar .mt-label{ font-family:var(--font-data); font-weight:700; font-size:.85rem; }
+    .admin-shell{ flex-direction:column; }
+    .admin-sidebar{ position:fixed; inset:0 auto 0 0; width:236px; z-index:200; transform:translateX(-100%); transition:transform .25s ease; }
+    .admin-shell.expanded .admin-sidebar{ transform:translateX(0); }
+    /* On mobile the label text should always be visible once the panel is
+       open — there's no icon-only rail state here, unlike desktop. */
+    .admin-shell.expanded .side-top .brand-mark span,
+    .admin-shell.expanded .side-link .label{ opacity:1; }
+    .sidebar-backdrop{ display:block; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:190; opacity:0; pointer-events:none; transition:opacity .25s ease; }
+    .admin-shell.expanded .sidebar-backdrop{ opacity:1; pointer-events:auto; }
+    .admin-main{ padding:1.6rem 1.1rem 3rem; }
+  }
 </style>
+
+<div class="mobile-topbar">
+  <button class="toggle-btn" id="mobileSidebarToggle" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <span class="mt-label">THE SMART MOVE</span>
+</div>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <aside class="admin-sidebar">
   <div class="side-top">
@@ -90,13 +118,26 @@ const isActive = (key) => active === key ? ' active' : '';
 (function(){
   var shell = document.getElementById('adminShell');
   var btn = document.getElementById('sidebarToggle');
-  if (!shell || !btn) return;
+  var mobileBtn = document.getElementById('mobileSidebarToggle');
+  var backdrop = document.getElementById('sidebarBackdrop');
+  if (!shell) return;
   var KEY = 'sm_admin_sidebar_expanded';
+  var isMobile = window.matchMedia('(max-width:768px)').matches;
+
+  // On desktop, remember the visitor's last expanded/collapsed choice. On
+  // mobile the sidebar is an overlay, so it should always start closed
+  // rather than covering the screen on every page load.
   var saved = localStorage.getItem(KEY);
-  if (saved === null || saved === 'true') shell.classList.add('expanded');
-  btn.addEventListener('click', function(){
+  if (!isMobile && (saved === null || saved === 'true')) shell.classList.add('expanded');
+
+  function toggle(){
     var expanded = shell.classList.toggle('expanded');
-    localStorage.setItem(KEY, expanded);
-  });
+    if (!isMobile) localStorage.setItem(KEY, expanded);
+  }
+  function close(){ shell.classList.remove('expanded'); }
+
+  if (btn) btn.addEventListener('click', toggle);
+  if (mobileBtn) mobileBtn.addEventListener('click', toggle);
+  if (backdrop) backdrop.addEventListener('click', close);
 })();
 </script>
