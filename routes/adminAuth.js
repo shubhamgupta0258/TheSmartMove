@@ -14,11 +14,15 @@ const COOKIE_OPTIONS = {
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
 
-const oauthClient = new OAuth2Client(
-  process.env.GOOGLE_CLIENT_ID,
-  process.env.GOOGLE_CLIENT_SECRET,
-  process.env.GOOGLE_REDIRECT_URI
-);
+// Built per-request from whatever host the visitor actually used (localhost,
+// a LAN IP while testing on a phone, or the real domain in production) —
+// this must exactly match one of the "Authorized redirect URIs" registered
+// in Google Cloud Console, but never needs manual updating as the app moves
+// between environments.
+function getOAuthClient(req) {
+  const redirectUri = `${req.protocol}://${req.get('host')}/admin/auth/google/callback`;
+  return new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, redirectUri);
+}
 
 function isLoggedInAsAdmin(req) {
   const token = req.cookies.smartmove_token;
@@ -43,7 +47,7 @@ router.get('/auth/google', (req, res) => {
     sameSite: 'lax',
     maxAge: 5 * 60 * 1000,
   });
-  const url = oauthClient.generateAuthUrl({
+  const url = getOAuthClient(req).generateAuthUrl({
     scope: ['openid', 'email', 'profile'],
     state,
   });
@@ -62,6 +66,7 @@ router.get('/auth/google/callback', async (req, res) => {
   res.clearCookie('g_oauth_state');
 
   try {
+    const oauthClient = getOAuthClient(req);
     const { tokens } = await oauthClient.getToken(code);
     const ticket = await oauthClient.verifyIdToken({
       idToken: tokens.id_token,

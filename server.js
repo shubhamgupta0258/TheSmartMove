@@ -18,6 +18,12 @@ const { attachUser } = require('./middleware/auth');
 
 const app = express();
 
+// Render (and most hosting platforms) sit behind a proxy that terminates
+// HTTPS and forwards plain HTTP internally — without this, req.protocol
+// would report "http" even in production, breaking the OAuth redirect URI
+// computed per-request in adminAuth.js/studentAuth.js.
+app.set('trust proxy', 1);
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
