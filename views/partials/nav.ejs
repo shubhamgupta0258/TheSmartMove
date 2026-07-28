@@ -4,8 +4,12 @@
 // (/#about) — keeps smooth-scroll working on the homepage while still
 // navigating correctly from other pages like /blog.
 const h = typeof home !== 'undefined' && home;
-const link = (anchor) => h ? anchor : '/' + anchor;
 const loggedInStudent = typeof user !== 'undefined' && user && user.role === 'student';
+// Logged-in students hitting `/` get redirected straight to their dashboard
+// (see server.js) unless `?browse=1` is present — so any homepage section
+// link needs that flag too, or it'll bounce back to the dashboard before
+// the hash ever gets a chance to scroll.
+const link = (anchor) => h ? anchor : '/' + (loggedInStudent ? '?browse=1' : '') + anchor;
 %>
 <!-- ============================ NAVBAR ============================ -->
 <header class="nav" id="nav">
@@ -32,7 +36,8 @@ const loggedInStudent = typeof user !== 'undefined' && user && user.role === 'st
       <a href="<%= link('#markets') %>">Markets</a>
       <a href="<%= link('#programs') %>">Programs</a>
       <a href="<%= link('#stories') %>">Stories</a>
-      <a href="<%= link('#insights') %>">Insights</a>
+      <!-- <a href="<%= link('#insights') %>">Insights</a> -->
+      <a href="<%= link('#insights') %>">Blog</a>
     </nav>
 
     <div class="nav-cta">
@@ -61,7 +66,8 @@ const loggedInStudent = typeof user !== 'undefined' && user && user.role === 'st
     <a href="<%= link('#markets') %>">Markets</a>
     <a href="<%= link('#programs') %>">Programs</a>
     <a href="<%= link('#stories') %>">Success Stories</a>
-    <a href="<%= link('#insights') %>">Market Insights</a>
+    <!-- <a href="<%= link('#insights') %>">Market Insights</a> -->
+     <a href="<%= link('#insights') %>">Blog</a>
     <a href="<%= link('#faq') %>">FAQ</a>
     <a href="<%= link('#book') %>" class="btn btn-gold btn-block">Book Free Session</a>
   </div>
